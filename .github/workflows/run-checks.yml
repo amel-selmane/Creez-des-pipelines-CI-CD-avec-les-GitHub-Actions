@@ -9,10 +9,10 @@ jobs:
         steps:
             - uses: actions/checkout@v4
 
-            # - name: Setup Node.js environment
-            #   uses: actions/setup-node@v4.0.1
-            #   with:
-            #     node-version: 18
+            - name: Setup Node.js environment
+              uses: actions/setup-node@v4.0.1
+              with:
+                node-version: 21.5.0
 
             - name: Verify Node Version
               run: node -v
