@@ -1,0 +1,14 @@
+name: Run Checks Workflow
+
+on: push
+
+jobs:
+    run-checks:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Get repository
+              uses: actions/checkout@v4
+
+            - name: install Node v18
+              uses: npm i node@18
