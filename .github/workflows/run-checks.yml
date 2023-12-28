@@ -7,13 +7,12 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
-                         
+            - uses: actions/checkout@v4
+
             - name: Setup Node.js environment
               uses: actions/setup-node@v4.0.1
               with:
                 node-version: 18
 
             - name: install Node v18
-              uses: npm install node@18
+              run: npm install node@18
