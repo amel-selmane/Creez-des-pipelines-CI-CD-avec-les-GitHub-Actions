@@ -16,3 +16,6 @@ jobs:
 
             - name: install Node v18
               run: npm install node@18
+
+            - name: Verify Node Version
+              run: node -v
