@@ -19,3 +19,15 @@ jobs:
 
             - name: Verify Node Version
               run: node -v
+
+            - name: Install project libs and dependencies
+              run: npm i
+
+            - name: Run Linter 
+              run: npm run lint
+            
+            - name: Run Typescript Typechecker
+              run: npm run typecheck
+
+            - name: Success message when Job done
+              run: echo "Job done!"
