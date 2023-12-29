@@ -1,12 +1,18 @@
 name: Complex workflow
 
-on: push
+on: 
+    push:
+        branches: ["partie-2/chapitre-2/section-4-fin"]
+    
 
 jobs:
     lint:
-        runs-on: ununtu-latest
+        runs-on: ubuntu-latest
 
         steps:
+            - name: Install libraries and dependencies
+              run: npm install
+              
             - name: Run linter
               run: npm run lint
 
