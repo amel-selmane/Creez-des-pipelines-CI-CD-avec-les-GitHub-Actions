@@ -1,0 +1,23 @@
+name: Complex workflow
+
+on: push
+
+jobs:
+    lint:
+        runs-on: ununtu-latest
+
+        steps:
+            - name: Run linter
+              run: npm run lint
+
+            - name: Run typecheck
+              run: npm run typecheck
+
+    # build_and_test:
+    #     needs: lint
+    #     runs-on: ubuntu-latest
+
+    #     steps:
+    #         - name:
+          
+                  
