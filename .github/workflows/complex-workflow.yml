@@ -24,8 +24,8 @@ jobs:
             - name: Running LS
               run: ls -al
 
-            # - name: Install libraries and dependencies
-            #   run: npm install
+            - name: Install libraries and dependencies
+              run: npm install
               
             # - name: Run linter
             #   run: npm run lint
