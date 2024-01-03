@@ -27,11 +27,11 @@ jobs:
             - name: Install libraries and dependencies
               run: npm install
               
-            # - name: Run linter
-            #   run: npm run lint
+            - name: Run linter
+              run: npm run lint
 
-            # - name: Run typecheck
-            #   run: npm run typecheck
+            - name: Run typecheck
+              run: npm run typecheck
 
     # build_and_test:
     #     needs: lint
