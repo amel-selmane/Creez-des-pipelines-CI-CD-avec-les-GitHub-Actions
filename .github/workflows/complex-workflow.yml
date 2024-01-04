@@ -17,6 +17,7 @@ jobs:
               uses: actions/setup-node@v3
               with: 
                 node-version: 18
+                cache: 'npm'
 
             - name: Verify Node version
               run: node -v
@@ -33,11 +34,15 @@ jobs:
             - name: Run typecheck
               run: npm run typecheck
 
-    # build_and_test:
-    #     needs: lint
-    #     runs-on: ubuntu-latest
+    build_and_test:
+        needs: lint
+        runs-on: ubuntu-latest
 
-    #     steps:
-    #         - name:
+        steps:
+            - name: Run project build
+              run: npm run build
+            
+            - name: Run tests
+              run: npm run test
           
                   
