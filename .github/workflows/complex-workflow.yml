@@ -52,6 +52,6 @@ jobs:
             run: npm run test
 
           - name: Print Congratulations message
-            run: "Congrats ! Workflow passed successfully"
+            run: echo "Congrats ! Workflow passed successfully"
           
                   
