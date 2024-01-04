@@ -19,12 +19,6 @@ jobs:
                 node-version: 18
                 cache: 'npm'
 
-            - name: Verify Node version
-              run: node -v
-
-            - name: Running LS
-              run: ls -al
-
             - name: Install libraries and dependencies
               run: npm install
               
@@ -39,10 +33,22 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Run project build
-              run: npm run build
+          - name: Checkout
+            uses: actions/checkout@v4
+
+          - name: Set up Node
+            uses: actions/setup-node@v3
+            with: 
+              node-version: 18
+              cache: 'npm'
+
+          - name: Run project build
+            run: npm run build
             
-            - name: Run tests
-              run: npm run test
+          - name: Run tests
+            run: npm run test
+
+          - name: Print Congratulations message
+            run: "Congrats ! Workflow passed successfully"
           
                   
