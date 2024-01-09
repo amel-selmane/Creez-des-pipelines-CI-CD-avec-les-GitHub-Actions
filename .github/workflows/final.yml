@@ -1,76 +1,76 @@
 name: main
 
 on:
-    push:
-        branches: ["partie-3/chapitre-2-debut"]
+  push:
+    branches: ["partie-3/chapitre-2-debut"]
 
-permissions: 
-    contents: read
-    pages: write
-    id-token: write
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
-jobs: 
-    lint:
-        runs-on: ubuntu-latest
+jobs:
+  lint:
+    runs-on: ubuntu-latest
 
-        steps: 
-            - name: Get project repository
-              uses: actions/checkout@v4
+    steps:
+      - name: Get project repository
+        uses: actions/checkout@v4
 
-            - name: Install and setup Node.js
-              uses: actions/setup-node@v4
-              with:
-                node-version: 18
-                cache: "npm"
-            
-            - name: Install project dependencies
-              run: npm ci
+      - name: Install and setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "npm"
 
-            - name: Run linter
-              run: npm run lint
+      - name: Install project dependencies
+        run: npm ci
 
-    test_and_build:
-        needs: lint
-        runs-on: ubuntu-latest
+      - name: Run linter
+        run: npm run lint
 
-        steps: 
-            - name: Get project repository
-              uses: actions/checkout@v4
+  test_and_build:
+    needs: lint
+    runs-on: ubuntu-latest
 
-            - name: Install and setup Node.js
-              uses: actions/setup-node@v4
-              with:
-                node-version: 18
-            
-            - name: Install project dependencies
-              run: npm ci
+    steps:
+      - name: Get project repository
+        uses: actions/checkout@v4
 
-            - name: Run tests
-              run: npm run test
+      - name: Install and setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
 
-            - name: Build the project
-              run: npm run build
+      - name: Install project dependencies
+        run: npm ci
 
-            - name: Upload the build as artifact
-              uses: actions/upload-pages-artifact@v3
-              with:
-                path: "src/dist"
+      - name: Run tests
+        run: npm run test
 
-    deploy:
-        environment:
-            name: github-pages
-            url: ${{ steps.deployment.outputs.page_url }}
+      - name: Build the project
+        run: npm run build
 
-        needs: test_and_build
-        runs-on: ubuntu-latest
+      - name: Upload the build as artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "src/dist"
 
-        steps:
-            - name: Download the Build Artifact
-              uses: actions/download-artifact@v4
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
-            - name: Setup Pages
-              uses: actions/configure-pages@v4
+    needs: test_and_build
+    runs-on: ubuntu-latest
 
-            - name: Deploy to GitHub Pages
-              id: deployment
-              uses: actions/deploy-pages@v4
+    steps:
+      - name: Download the Build Artifact
+        uses: actions/download-artifact@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
