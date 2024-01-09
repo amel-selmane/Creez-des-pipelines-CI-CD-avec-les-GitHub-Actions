@@ -1,0 +1,27 @@
+name: main
+
+on:
+    push:
+        branches: ["partie-3/chapitre-2-debut"]
+
+jobs: 
+    lint:
+        runs-on: ubuntu-latest
+
+        steps: 
+            - name: Get project repository
+              uses: actions/checkout@v4
+
+            - name: Install and setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: 18
+                cache: "npm"
+            
+            - name: Install project dependencies
+              run: npm ci
+
+            - name: Run linter
+              run: npm run lint
+
+        
