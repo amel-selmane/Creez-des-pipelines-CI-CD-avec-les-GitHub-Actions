@@ -4,10 +4,10 @@ import {describe, expect, it} from 'vitest';
 import Page from ".";
 
 describe("Home Page component test suites", () => {
-  it('should display Hello, World!', async () => {
+  it('should display Bonjour tout le monde !', async () => {
     render(<Page />)
 
-    expect(screen.getByTestId('title').textContent).toEqual('Hello, World!')
+    expect(screen.getByTestId('title').textContent).toEqual('Bonjour tout le monde !')
   })
 })
 
